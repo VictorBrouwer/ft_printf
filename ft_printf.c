@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   ft_printf.c                                        :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: vbrouwer <vbrouwer@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/20 19:41:25 by vbrouwer      #+#    #+#                 */
-/*   Updated: 2022/11/01 12:23:37 by vbrouwer      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vbrouwer <vbrouwer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/20 19:41:25 by vbrouwer          #+#    #+#             */
+/*   Updated: 2022/11/14 12:39:47 by vbrouwer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	ft_printf(const char *s, ...)
 		}
 		else
 		{
-			print_putchar(s[i]);
+			if (print_putchar(s[i]) == -1)
+				return (-1);
 			len++;
 		}
 		i++;
@@ -51,11 +52,12 @@ int	ft_printf(const char *s, ...)
 	return (len);
 }
 
-// #include <stdio.h>
+#include <stdio.h>
+#include <unistd.h>
 
-// int	main()
-// {
-// 	ft_printf("hello %%", 'X');
-// 	printf("\nhello %%", 'X');
-// 	return (0);
-// }
+int	main()
+{
+	ft_printf("\u2705");
+	printf("\u2705");
+	return (0);
+}

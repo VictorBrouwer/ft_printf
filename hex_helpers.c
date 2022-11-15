@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   hex_helpers.c                                      :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: vbrouwer <vbrouwer@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2022/10/27 12:02:30 by vbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/31 09:34:26 by vbrouwer      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   hex_helpers.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vbrouwer <vbrouwer@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/27 12:02:30 by vbrouwer          #+#    #+#             */
+/*   Updated: 2022/11/14 11:13:38 by vbrouwer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ int	print_ptr(va_list args)
 	int		i;
 
 	address = va_arg(args, void *);
-	write(1, "0x", 2);
+	if (write(1, "0x", 2) == -1)
+		return (-1);
 	i = lower_hex((unsigned long)address) + 2;
 	return (i);
 }
